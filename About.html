@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anuphan:wght@100..700&family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Anuphan", sans-serif;
+            background: linear-gradient(135deg, #000000 0%, #1a0033 50%, #4a0080 100%);
+            min-height: 100vh;
+            color: white;
+        }
+        .navbar {
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .nav-logo img {
+            height: 10% ;
+            width: 10% ;
+          }
+
+        .logo-circle {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #f97316, #ea580c);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2em;
+            box-shadow: 0 4px 15px rgba(249, 115, 22, 0.4);
+        }
+
+        .nav-logo-text {
+            color: white;
+        }
+
+        .nav-logo-text h2 {
+            font-size: 1.1em;
+            margin-bottom: 2px;
+        }
+
+        .nav-logo-text p {
+            font-size: 0.85em;
+            color: #94a3b8;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            font-size: 1em;
+        }
+
+        .nav-menu a:hover {
+            color: #f97316;
+        }
+.content {
+  position: relative;
+  z-index: 2;
+  color: white;
+  padding: 40px;
+  max-width: 1400px;
+  margin: 0 auto;
+  border-bottom: 3px solid #a855f7;
+}
+.header {
+  margin-top: 20px;
+  text-align: center;
+  margin-bottom: 60px;
+  animation: fadeInDown 1s ease-out;
+}
+.header h1 {
+  font-size: 3.5rem;
+  margin-bottom: 10px;
+  text-shadow: 0 0 20px rgba(197, 77, 233, 0.8);
+  background: linear-gradient(45deg, #d089ed, #d16ef8, #9936f6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.header h3 {
+  margin-bottom: 5px ;
+  font-size: 2rem;
+  color: #b3d9ff;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+.header p {
+  font-size: 1.3rem;
+  color: #b3d9ff;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+        .logo {
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .logo span {
+            color: #a855f7;
+        }
+
+        .tagline {
+            font-size: 14px;
+            color: #e0e0e0;
+            margin-bottom: 30px;
+        }
+
+        .main-title {
+            font-size: 48px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .main-title span {
+            color: #a855f7;
+        }
+
+        .subtitle {
+            font-size: 24px;
+            color: #d4d4d4;
+            margin-bottom: 10px;
+        }
+
+        .subtitle span {
+            color: #fbbf24;
+        }
+
+        .thai-subtitle {
+            font-size: 20px;
+            color: #e0e0e0;
+            line-height: 1.6;
+        }
+
+        .thai-subtitle span {
+            color: #a855f7;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+
+        .team-section {
+            margin-bottom: 80px;
+        }
+
+        .section-title {
+            font-size: 36px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 50px;
+            color: #a855f7;
+        }
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 10px;
+            margin-bottom: 60px;
+        }
+
+        .team-grid-row-2 {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 30px;
+        }
+
+        .team-grid-row-2 .team-card {
+            width: calc(25% - 22.5px);
+            max-width: 350px;
+        }
+
+        .team-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(168, 85, 247, 0.3);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .team-card:hover {
+            transform: translateY(-10px);
+            border-color: #a855f7;
+            box-shadow: 0 10px 40px rgba(168, 85, 247, 0.3);
+        }
+
+        .team-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #a855f7, #6366f1);
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            font-weight: bold;
+            color: white;
+            overflow: hidden;
+        }
+
+        .team-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .team-name {
+            font-size: 22px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #ffffff;
+        }
+
+        .team-role {
+            font-size: 16px;
+            color: #a855f7;
+            margin-bottom: 15px;
+        }
+
+        .team-description {
+            font-size: 14px;
+            color: #d4d4d4;
+            line-height: 1.6;
+        }
+
+        .contact-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            margin-top: 60px;
+        }
+
+        .contact-info {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(168, 85, 247, 0.3);
+            border-radius: 15px;
+            padding: 40px;
+        }
+
+        .contact-info h3 {
+            font-size: 28px;
+            color: #a855f7;
+            margin-bottom: 30px;
+        }
+
+        .info-item {
+            margin-bottom: 25px;
+            padding: 15px;
+            background: rgba(168, 85, 247, 0.1);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .info-item:hover {
+            background: rgba(168, 85, 247, 0.2);
+        }
+
+        .info-item label {
+            font-size: 14px;
+            color: #a855f7;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .info-item p {
+            font-size: 18px;
+            color: #ffffff;
+        }
+
+        .contact-form {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(168, 85, 247, 0.3);
+            border-radius: 15px;
+            padding: 40px;
+        }
+
+        .contact-form h3 {
+            font-size: 28px;
+            color: #a855f7;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #e0e0e0;
+            font-size: 14px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(168, 85, 247, 0.3);
+            border-radius: 8px;
+            color: white;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #a855f7;
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #a855f7, #6366f1);
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(168, 85, 247, 0.5);
+        }
+
+        .success-message {
+            background: rgba(34, 197, 94, 0.2);
+            border: 1px solid #22c55e;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
+            color: #22c55e;
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .contact-section {
+                grid-template-columns: 1fr;
+            }
+
+            .main-title {
+                font-size: 32px;
+            }
+
+            .subtitle {
+                font-size: 18px;
+            }
+
+            .thai-subtitle {
+                font-size: 16px;
+            }
+
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        footer {
+  background: linear-gradient(135deg, #0a1628 0%, #1a0a28 50%, #2d1810 100%);
+  color: white;
+  padding: 60px 40px 30px;
+  position: relative;
+}
+footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+}
+.footer-container {
+  max-width: 1400px;
+  margin: 0 auto;          /* << จัดกึ่งกลาง */
+  padding: 0 40px;
+
+  display: grid;
+  grid-template-columns: 1.5fr 1.2fr 1fr 1fr; /* สมดุล */
+  gap: 50px;
+  margin-bottom: 30px;
+}
+        .cc{
+            margin-top: 10px;
+            font-size: 16px;
+            color: #d8cf22;
+        }
+        .footer-section h2 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #ffffff;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-section h2::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(90deg, #6366f1, #8b5cf6);
+            border-radius: 2px;
+        }
+
+        .footer-section p,
+        .footer-section ul {
+            font-size: 15px;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 12px;
+        }
+
+        .team-section ul li {
+            margin-bottom: 8px;
+        }
+
+        .office-info p {
+            margin-bottom: 10px;
+        }
+
+        .office-info a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .office-info a:hover {
+            color: #8b5cf6;
+        }
+
+        .links-section ul li a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .links-section ul li a:hover {
+            color: #8b5cf6;
+            transform: translateX(5px);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .social-icons a {
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-icons a:hover {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(139, 92, 246, 0.4);
+        }
+
+        .social-icons svg {
+            width: 22px;
+            height: 22px;
+            fill: #ffffff;
+        }
+.footer-bottom {
+  text-align: center;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+.footer-bottom p {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 14px;
+}
+        @media (max-width: 1024px) {
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 40px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .footer-container {
+                padding: 40px 30px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 35px;
+            }
+
+            .footer-section h2 {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="img/ตราโรงเรียน2.png" >
+                <img src="img/โลโก้ (1).png">
+                <div class="nav-logo-text">
+                    <h2>Study Plan Guide</h2>
+                    <p>แนวทางการวางแผนการศึกษา</p>
+                </div>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html.html">Home</a></li>
+                <li><a href="tcas.html.html">TCAS System</a></li>
+                <li><a href="contact.html">Contact Teachers</a></li>
+                <li><a href="About.html">About</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="header">
+        <div class="content">
+        <div class="header">
+            <h1>🚀 STUDY PLAN GUIDE</h1>
+            <h3>แนวทางการวางแผนการศึกษา</h3>
+            <p>"วางแผนเส้นทางการศึกษาสู่อนาคต เริ่มต้นค้นหาเส้นทางการศึกษาของคุณ"</p>
+        </div>     
+    </div>
+    </div>
+
+    <div class="container">
+        <div class="team-section">
+            <h2 class="section-title">ผู้จัดทำโครงงาน</h2>
+            
+            <div class="team-grid">
+                <div class="team-card">
+                    <div class="team-avatar">
+                        <img src="img/2.jpg" alt="">
+                    </div>
+                    <h3 class="team-name">นางสาวดาราวดี รอบคอบ</h3>
+                    <p class="team-role">Content Creator</p>
+                    <p class="team-description">ผู้หาเนื้อหาที่มีคุณภาพและน่าสนใจ</p>
+                </div>
+
+                <div class="team-card">
+                    <div class="team-avatar">
+                        <img src="img/3.jpg" alt="">
+                    </div>
+                    <h3 class="team-name">นายสุรเชษฐ์ เริ่มศรี</h3>
+                    <p class="team-role">Web Developer</p>
+                    <p class="team-description">ผู้ที่ดูแลในการพัฒนาเว็บไซต์</p>
+                </div>
+
+                <div class="team-card">
+                    <div class="team-avatar">
+                        <img src="img/1.jpg" alt="">
+                    </div>
+                    <h3 class="team-name">นางสาววรรณภา ทองปาน</h3>
+                    <p class="team-role">Project Manager</p>
+                    <p class="team-description">ผู้ดูแลด้านการวางแผนโครงงานและโครงสร้างเว็บไซต์</p>
+                </div>
+
+                <div class="team-card">
+                    <div class="team-avatar">
+                        <img src="img/5.jpg" alt="">
+                    </div>
+                    <h3 class="team-name">นางสาววรัทยา จันทร์แฟง</h3>
+                    <p class="team-role">Graphic & UX Designer</p>
+                    <p class="team-description">ผู้ดูแลภาพลักษณ์รวมของเว็บไซต์</p>
+                </div>
+                <div class="team-card">
+                    <div class="team-avatar">
+                        <img src="img/4.jpg" alt="">
+                    </div>
+                    <h3 class="team-name">นายจีรพัฒน์ ทิพย์กาวี</h3>
+                    <p class="team-role">Research & Data Analyst</p>
+                    <p class="team-description">ผู้วิเคราะห์แนวโน้มความสนใจของนักเรียน</p>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="section-title">ติดต่อเรา</h2>
+        
+        <div class="contact-section">
+            <div class="contact-info">
+                <h3>ข้อมูลการติดต่อ</h3>
+                
+                <div class="info-item">
+                    <label>ที่อยู่</label>
+                    <p>217 หมู่ที่ 11<br> ตำบลทุ่งสุขลา อำเภอศรีราชา จังหวัดชลบุรี 20230</p>
+                </div>
+
+                <div class="info-item">
+                    <label>อีเมล</label>
+                    <p>studyplanguide@gmail.com</p>
+                </div>
+
+                <div class="info-item">
+                    <label>โทรศัพท์</label>
+                    <p>093-231-6429</p>
+                </div>
+
+                <div class="info-item">
+                    <label>เวลาทำการ</label>
+                    <p>จันทร์ - ศุกร์: 9:00 - 18:00 น.<br>เสาร์ - อาทิตย์: ปิดทำการ</p>
+                </div>
+            </div>
+
+            <div class="contact-form">
+                <h3>ส่งข้อความถึงเรา</h3>
+                
+                <div id="successMessage" class="success-message">
+                    ส่งข้อความสำเร็จ! เราจะติดต่อกลับโดยเร็วที่สุด
+                </div>
+
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">ชื่อ-นามสกุล *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">อีเมล *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">เบอร์โทรศัพท์</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">ข้อความ *</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-btn">ส่งข้อความ</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const form = document.getElementById('contactForm');
+        const successMessage = document.getElementById('successMessage');
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // แสดงข้อความสำเร็จ
+            successMessage.style.display = 'block';
+            
+            // รีเซ็ตฟอร์ม
+            form.reset();
+            
+            // ซ่อนข้อความหลัง 5 วินาที
+            setTimeout(function() {
+                successMessage.style.display = 'none';
+            }, 5000);
+            
+            // เลื่อนไปที่ข้อความสำเร็จ
+            successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        });
+
+        // เพิ่มเอฟเฟกต์เมื่อเลื่อนหน้า
+        const teamCards = document.querySelectorAll('.team-card');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '0';
+                    entry.target.style.transform = 'translateY(20px)';
+                    
+                    setTimeout(() => {
+                        entry.target.style.transition = 'all 0.6s ease';
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }, 100);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        teamCards.forEach(card => {
+            observer.observe(card);
+        });
+    </script>
+     <footer>
+        <div class="footer-container">
+            <!-- EduPath Section -->
+            <div class="footer-section">
+                <h2>EduPath</h2>
+                <p>เว็บไซต์นี้ถูกสร้างขึ้นเพื่อเป็นสื่อแนะแนวการศึกษา สำหรับนักเรียนโรงเรียนทุ่งศุขลาพิทยา “กรุงไทยอนุเคราะห์” โดยมีวัตถุประสงค์เพื่อช่วยให้นักเรียนระดับมัธยมศึกษาตอนต้นสามารถศึกษาข้อมูลเกี่ยวกับแผนการเรียนในระดับมัธยมศึกษาตอนปลาย เข้าใจลักษณะ จุดเด่น และความเหมาะสมของแต่ละแผนการเรียน รวมถึงความเชื่อมโยงกับแนวทางการศึกษาต่อในระดับอุดมศึกษา เพื่อใช้ประกอบการตัดสินใจและวางแผนการศึกษาในอนาคตได้อย่างเหมาะสม</p>
+                <div class="cc">แบบประเมินความพึงพอใจ: <a href="https://docs.google.com/forms/d/e/1FAIpQLScoBvVU9-Ikb_FWT97vTb10UE1pDnA5pAObFnzfa9UbhbxfBw/viewform?usp=publish-editor" target="_blank">คลิกที่นี่</a></div>
+            </div>
+
+            <!-- Developed by Section -->
+            <div class="footer-section team-section">
+                <h2>Developed by Study Plan Guide Team</h2>
+                <ul>
+                    <li>น.ส.วรรณภา ทองปาน</li>
+                    <li>นายสุรเชษฐ์ เริ่มศรี</li>
+                    <li>น.ส.ดาราวดี รอบคอบ</li>
+                    <li>น.ส.วรัทยา จันทร์แฟง</li>
+                    <li>นายจีรพัฒน์ ทิพย์กาวี</li>
+                    <li>นักเรียนชั้นมัธยมศึกษาปีที่ 5/3</li>
+                    <li>โรงเรียนทุ่งศุขลาพิทยา "กรุงไทยอนุเคราะห์"</li>
+                </ul>
+                <p style="margin-top: 20px;"><strong>ครูที่ปรึกษา</strong><br>
+                นางวินิตา จำนงค์<br>
+                นางสาวบุษกร สุภาผล</p>
+            </div>
+
+            <!-- Office Section -->
+            <div class="footer-section office-info">
+                <h2>Office</h2>
+                <p>โรงเรียนทุ่งศุลาพิทยา "กรุงไทยอนุเคราะห์"</p>
+                <p><strong>217 หมู่ที่ 11</strong> ตำบลทุ่งสุขลา อำเภอศรีราชา จังหวัดชลบุรี รหัสไปรษณีย์ <strong>20230</strong></p>
+                <p><a href="https://www.thungsukla.ac.th" target="_blank">www.thungsukla.ac.th</a></p>
+                <p>โทรศัพท์ 038-350456</p>
+                <p>โทรสาร 038-350499</p>
+            </div>
+
+            <!-- Links & Contact Section -->
+            <div class="footer-section links-section">
+                <h2>Links</h2>
+                <ul>
+                    <li><a href="index.html.html">Home</a></li>
+                    <li><a href="tcas.html.html">TCAS System</a></li>
+                    <li><a href="contact.html">Contact Teachers</a></li>
+                    <li><a href="About.html">about</a></li>
+                </ul>
+
+                <h2 style="margin-top: 35px;">Contact</h2>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/thungsuklaschool" aria-label="Facebook">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                        </svg>
+                    </a>
+                    <a href="https://www.thungsukla.ac.th/" aria-label="Website">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                        </svg>
+                    </a>
+                    <a href="https://www.youtube.com/@thungsuklapittaya/featured" aria-label="YouTube">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    <div class="footer-bottom">
+        <p> EduPath © 2025 - All Rights Reserved </p>
+    </div>
+    </footer>
+</body>
+</html>

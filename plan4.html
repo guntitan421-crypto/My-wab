@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>แผนการเรียนศิลปกรรม</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anuphan:wght@100..700&family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Anuphan", sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .home-button {
+            background: linear-gradient(135deg, #2040ce 0%, #5e11ab 100%);
+            margin: 10px;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+            position: absolute;
+            top: 0;
+            right: 0;
+            z-index: 10;
+        }
+
+        .home-button:hover {
+            background: linear-gradient(135deg, #1c947a 0%, #228a9f 100%);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: pulse 15s infinite;
+        }
+        
+        .info-section {
+            background: white;
+            border-radius: 20px;
+            padding: 35px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        .info-section h2 {
+            color: #764ba2;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+
+        .info-content {
+            color: #555;
+            line-height: 1.8;
+            font-size: 1em;
+        }
+
+        .info-content ul {
+            margin: 15px 0 15px 25px;
+        }
+
+        .info-content li {
+            margin-bottom: 10px;
+            font-size: 1rem;
+        }
+
+        .grade-selector {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+            padding: 30px;
+            border-radius: 15px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .section-title {
+            color: #4395c8;
+            font-size: 1em;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .section-content {
+            color: #333;
+            line-height: 1.8;
+            font-size: 1.1em;
+        }
+        
+        .section-content h3 {
+            color: #764ba2;
+            font-size: 20px;
+        }
+        
+        .subjects-list, .skills-list {
+            list-style: none;
+            margin-top: 10px;
+        }
+
+        .subjects-list li, .skills-list li {
+            padding: 12px 20px;
+            margin: 10px 0;
+            background: white;
+            border-radius: 10px;
+            border-left: 4px solid #aab5e6;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .grade-btn {
+            background: white;
+            color: #667eea;
+            border: 3px solid #667eea;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .grade-btn:hover {
+            background: #667eea;
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .grade-btn.active {
+            background: #667eea;
+            color: white;
+        }
+
+        .curriculum-table {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            margin-top: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .table-header {
+            background: #FFC107;
+            color: #000;
+            font-weight: bold;
+            text-align: center;
+            padding: 15px;
+            font-size: 1.1em;
+        }
+
+        .semester-header {
+            background: #E8E8E8;
+            padding: 12px;
+            font-weight: bold;
+            border: 1px solid #999;
+            text-align: center;
+        }
+
+        td {
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+
+        .subject-code {
+            text-align: center;
+            width: 80px;
+            font-weight: 500;
+        }
+
+        .subject-name {
+            padding-left: 15px;
+        }
+
+        .hours {
+            text-align: center;
+            width: 60px;
+            font-weight: 500;
+        }
+
+        .total-row {
+            background: #FFC107;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .group-header {
+            background: #FFE082;
+            font-weight: bold;
+            padding: 12px;
+            text-align: center;
+        }
+
+        .semester-1 {
+            background: #FFF9E6;
+        }
+
+        .semester-2 {
+            background: #FFE6F0;
+        }
+
+        .faculty-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .faculty-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            border-left: 5px solid #667eea;
+        }
+
+        .faculty-card h3 {
+            color: #764ba2;
+            font-size: 1.4em;
+            margin-bottom: 15px;
+        }
+
+        .faculty-card p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        .faculty-card .examples {
+            color: #667eea;
+            font-size: 0.9em;
+            margin-top: 10px;
+            font-style: italic;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8em;
+            }
+            
+            .grade-btn {
+                padding: 12px 25px;
+                font-size: 1em;
+            }
+
+            table {
+                font-size: 0.85em;
+            }
+
+            td {
+                padding: 8px 5px;
+            }
+
+            .subject-name {
+                padding-left: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <a href="index.html.html" class="home-button">
+            🏠 Home
+            </a>
+            <h1>🎨 แผนการเรียนศิลปกรรม</h1>
+            <p class="subtitle">Fine Arts Curriculum</p>
+        </div>
+
+        <div class="info-section">
+            <div class="section">
+            <h2>📚 เกี่ยวกับแผนการเรียน</h2>
+            <div class="info-content">
+                <p>แผนการเรียนศิลปกรรมมุ่งพัฒนาความคิดสร้างสรรค์ ทักษะทางศิลปะ และการออกแบบ เพื่อถ่ายทอดแนวคิดผ่านผลงานศิลป์และสื่อสร้างสรรค์</p>
+
+                <h3 class="section-title"><p style="margin-top: 15px;"><strong>จุดเด่นของแผนการเรียน:</strong></p></h3>
+                <div class="section-content">
+                    <ul class="subjects-list">
+                        <li>ส่งเสริมจินตนาการและความคิดสร้างสรรค์</li>
+                        <li>เน้นการสร้างผลงานจริง</li>
+                        <li>พัฒนาทักษะด้านศิลปะและการออกแบบ</li>
+                    </ul>
+                </div>
+            </div>
+            </div>
+        </div>
+
+        <div class="info-section">
+            <div class="section">
+            <h2>🎯 แผนการเรียนนี้ศึกษาต่อได้อย่างไร?</h2>
+            <div class="info-content">
+                <p>สามารถศึกษาต่อในคณะศิลปกรรมศาสตร์ คณะสถาปัตยกรรมศาสตร์ คณะมัณฑนศิลป์ คณะนิเทศศิลป์ และคณะดิจิทัลมีเดีย</p>
+                <h3 class="section-title"><p style="margin-top: 15px;"><strong>ข้อได้เปรียบในการศึกษาต่อ:</strong></p></h3>
+                <div class="section-content">
+                <ul class="subjects-list">
+                    <li>มีผลงานสะสม (Portfolio) พร้อมยื่นเข้าศึกษาต่อ</li>
+                    <li>เหมาะกับสายอาชีพสร้างสรรค์</li>
+                    <li>เปิดโอกาสสู่อาชีพด้านศิลปะและการออกแบบ</li>
+                </ul>
+                </div>
+            </div>
+            </div>
+        </div>
+
+        <div class="info-section">
+            <h2>📖 รายวิชาที่เรียนในแต่ละระดับชั้น (ม.ปลาย)</h2>
+            <div class="grade-selector">
+                <button class="grade-btn active" onclick="showGrade('m4')">ม.4</button>
+                <button class="grade-btn" onclick="showGrade('m5')">ม.5</button>
+                <button class="grade-btn" onclick="showGrade('m6')">ม.6</button>
+            </div>
+
+            <div id="subjects-container"></div>
+        </div>
+
+        <div class="info-section">
+            <h2>🎓 ตัวอย่างคณะที่สามารถศึกษาต่อได้</h2>
+            <div class="faculty-grid">
+                <div class="faculty-card">
+                    <h3>1. คณะศิลปกรรมศาสตร์</h3>
+                    <p>การสร้างสรรค์ผลงานศิลปะและการออกแบบ รวมถึงการเรียนรู้ทฤษฎีศิลปะและการถ่ายทอดความรู้ด้านศิลปะ</p>
+                    <p class="examples">สาขา: ภาควิชาทัศนศิลป์, ประติมากรรม, ภาพพิมพ์, ศิลปะการแสดง</p>
+                </div>
+                
+                <div class="faculty-card">
+                    <h3>2. คณะสถาปัตยกรรมศาสตร์</h3>
+                    <p>การออกแบบอาคาร พื้นที่ และสภาพแวดล้อมให้เหมาะกับการใช้งานและสุนทรียภาพ</p>
+                    <p class="examples">สาขา: สถาปัตยกรรม, สถาปัตยกรรมภายใน, ภูมิสถาปัตยกรรม</p>
+                </div>
+                
+                <div class="faculty-card">
+                    <h3>3. คณะมัณฑนศิลป์ (มหาวิทยาลัยศิลปกร)</h3>
+                    <p>การออกแบบเชิงศิลปะประยุกต์ เพื่อใช้ในงานสื่อสารและการใช้งานจริง</p>
+                    <p class="examples">สาขา: การออกแบบนิเทศศิลป์, การออกแบบภายใน, ประยุกตศิลปศึกษา</p>
+                </div>
+                
+                <div class="faculty-card">
+                    <h3>4. คณะวิจิตรศิลป์ (มหาวิทยาลัยเชียงใหม่)</h3>
+                    <p>การสร้างสรรค์ศิลปะทั้งแบบดั้งเดิมและร่วมสมัย</p>
+                    <p class="examples">สาขา: ภาควิชาทัศนศิลป์, ภาควิชาศิลปะไทย, ภาควิชาสื่อศิลปะและการออกแบบสื่อ</p>
+                </div>
+                
+                <div class="faculty-card">
+                    <h3>5. คณะดิจิทัลมีเดีย</h3>
+                    <p>การสร้างสรรค์ผลงานศิลปะและสื่อดิจิทัลด้วยเทคโนโลยี</p>
+                    <p class="examples">สาขา: ดิจิทัลอาร์ตส์, กราฟิกดีไซน์, แอนิเมชันและวิชวลเอฟเฟกต์</p>
+                </div>
+
+                <div class="faculty-card">
+                    <h3>6. คณะนิเทศศาสตร์</h3>
+                    <p>การผลิตครูศิลปะและการจัดการเรียนการสอนด้านศิลปะ</p>
+                    <p class="examples">สาขา: ศิลปศึกษา</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+const curriculumData = {
+    m4: `
+        <div class="curriculum-table">
+            <table>
+                <tr class="table-header">
+                    <td colspan="5">รายวิชาพื้นฐานประจำชั้น ม.4 ปีการศึกษา 2569</td>
+                </tr>
+                <tr class="semester-header">
+                    <td colspan="2">ภาคเรียนที่ 1</td>
+                    <td colspan="2">ภาคเรียนที่ 2</td>
+                    <td>หน่วยกิต</td>
+                </tr>
+                <tr class="group-header">
+                    <td colspan="5">รายวิชาพื้นฐาน</td>
+                </tr>
+                <tr class="semester-1">
+                    <td class="subject-code">ท31101</td>
+                    <td class="subject-name">ภาษาไทย 1</td>
+                    <td class="subject-code">ท31102</td>
+                    <td class="subject-name">ภาษาไทย 2</td>
+                    <td class="hours">2.0</td>
+                </tr>
+                <tr class="semester-1">
+                    <td class="subject-code">ค31103</td>
+                    <td class="subject-name">คณิตศาสตร์ 1 (วิทย์)</td>
+                    <td class="subject-code">ค31104</td>
+                    <td class="subject-name">คณิตศาสตร์ 2 (วิทย์)</td>
+                    <td class="hours">2.0</td>
+                </tr>
+                <tr class="semester-1">
+                    <td class="subject-code">ว31141</td>
+                    <td class="subject-name">วิทยาศาสตร์ชีวภาพ</td>
+                    <td class="subject-code">ว31174</td>
+                    <td class="subject-name">การออกแบบและเทคโนโลยี</td>
+                    <td class="hours">2.0</td>
+                </tr>
+                <tr class="semester-1">
+                    <td class="subject-code">ส31101</td>
+                    <td class="subject-name">สังคมศึกษา 1</td>
+                    <td class="subject-code">ส31102</td>
+                    <td class="subject-name">สังคมศึกษา 2</td>
+                    <td class="hours">2.0</td>
+                </tr>
+                <tr class="semester-1">
+                    <td class="subject-code">ส31105</td>
+                    <td class="subject-name">ประวัติศาสตร์ไทย 1</td>
+                    <td class="subject-code">ส31106</td>
+                    <td class="subject-name">ประวัติศาสตร์ไทย 2</td>
+                    <td class="hours">1.0</td>
+                </tr>
+                <tr class="semester-1">
+                    <td class="subject-code">พ31101</td>
+                    <td class="subject-name">สุขศึกษาและพลศึกษา 1</td>
+                    <td class="subject-code">พ31102</td>
+                    <td class="subject-name">สุขศึกษาและพลศึกษา 2</td>
+                    <td class="hours">1.0</td>
+                </tr>
+                <tr class="semester-1">
+                    <td class="subject-code">ศ31101</td>
+                    <td class="subject-name">ทัศนศิลป์ 1</td>
+                    <td class="subject-code">ศ31102</td>
+                    <td class="subject-name">ดนตรี-นาฏศิลป์ 1</td>
+                    <td class="hours">1.0</td>
+                </tr>
+                <tr class="semester-1">
+                    <td class="subject-code">ว31171</td>
+                    <td class="subject-name">วิทยการคำนวณ</td>
+                    <td class="subject-code">ง31101</td>
+                    <td class="subject-name">การงานอาชีพ 1</td>
+                    <td class="hours">1.5</td>
+                </tr>
+                <tr class="semester-1">
+                    <td class="subject-code">อ31101</td>
+                    <td class="subject-name">ภาษาอังกฤษ 1</td>
+                    <td class="subject-code">อ31102</td>
+                    <td class="subject-name">ภาษาอังกฤษ 2</td>
+                    <td class="hours">2.0</td>
+                </tr>
+                <tr class="total-row">
+                    <td colspan="4">รวมพื้นฐาน</td>
+                    <td>14.5</td>
+                </tr>
+                <tr class="group-header">
+                    <td colspan="5">รายวิชาเพิ่มเติม</td>
+                </tr>
+                <tr class="semester-2">
+                    <td class="subject-code">อ31201</td>
+                    <td class="subject-name">ภาษาอังกฤษฟัง-พูดเพื่อการเข้าสังคม 1</td>
+                    <td class="subject-code">อ31202</td>
+                    <td class="subject-name">ภาษาอังกฤษฟัง-พูดเพื่อการเข้าสังคม 2</td>
+                    <td class="hours">2.0</td>
+                </tr>
+                <tr class="semester-2">
+                    <td class="subject-code">อ31203</td>
+                    <td class="subject-name">ภาษาอังกฤษอ่าน-เขียนเพื่อชีวิตประจำวัน 1</td>
+                    <td class="subject-code">อ31204</td>
+                    <td class="subject-name">ภาษาอังกฤษอ่าน-เขียนเพื่อชีวิตประจำวัน 2</td>
+                    <td class="hours">2.0</td>
+                </tr>
+                <tr class="semester-2">
+                    <td class="subject-code">ท31201</td>
+                    <td class="subject-name">การเขียนเพื่อการสื่อสาร</td>
+                    <td class="subject-code">ท31202</td>
+                    <td class="subject-name">การพูดเพื่อพัฒนาอาชีพ</td>
+                    <td class="hours">2.0</td>
+                </tr>
+                <tr class="semester-2">
+                    <td class="subject-code">ศ30201</td>
+                    <td class="subject-name">ศิลปะและการออกแบบเบื้องต้น 1</td>
+                    <td class="subject-code">ศ30202</td>
+                    <td class="subject-name">ศิลปะและการออกแบบเบื้องต้น 2</td>
+                    <td class="hours">3.0</td>
+                </tr>
+                <tr class="semester-2">
+                    <td class="subject-code">ศ30207</td>
+                    <td class="subject-name">ทฤษฎีและการปฏิบัติเครื่องดนตรีสากล 1</td>
+                    <td class="subject-code">ศ30208</td>
+                    <td class="subject-name">ทฤษฎีและการปฏิบัติเครื่องดนตรีสากล 2</td>
+                    <td class="hours">2.0</td>
+                </tr>
+                <tr class="total-row">
+                    <td colspan="4">รวมเพิ่มเติม</td>
+                    <td>11.0</td>
+                </tr>
+                <tr class="group-header">
+                    <td colspan="5">กิจกรรมพัฒนาผู้เรียน</td>
+                </tr>
+                <tr class="semester-1">
+                    <td class="subject-code">ก31991</td>
+                    <td class="subject-name">ชุมนุมตามความสนใจ 1/กิจกรรมนักศึกษาวิชาทหาร ชั้นปีที่ 1</td>
+                    <td class="subject-code">ก31992</td>
+                    <td class="subject-name">ชุมนุมตามความสนใจ 2/กิจกรรมนักศึกษาวิชาทหาร ชั้นปีที่ 1</td>
+                    <td class="hours">-</td>
+                </tr>
+                <tr class="semester-1">
+                    <td class="subject-code">ก31903</td>
+                    <td class="subject-name">แนะแนว 1</td>
+                    <td class="subject-code">ก31904</td>
+                    <td class="subject-name">แนะแนว 2</td>
+                    <td class="hours">-</td>
+                </tr>
+                <tr class="semester-1">
+                    <td class="subject-code">ก31903</td>
+                    <td class="subject-name">กิจกรรมเพื่อสังคมฯ 1</td>
+                    <td class="subject-code">ก31904</td>
+                    <td class="subject-name">กิจกรรมเพื่อสังคมฯ 1</td>
+                    <td class="hours">-</td>
+                </tr>
+                <tr class="semester-1">
+                    <td class="subject-code"></td>
+                    <td class="subject-name">ค้นคว้า</td>
+                    <td class="subject-code"></td>
+                    <td class="subject-name">ค้นคว้า</td>
+                    <td class="hours">-</td>
+                </tr>
+                <tr class="total-row">
+                    <td colspan="4">รวมทั้งหมด</td>
+                    <td>25.5</td>
+                </tr>
+            </table>
+        </div>
+    `,
+    m5: `
+        <div class="curriculum-table">
+            <table>
+                <tr class="table-header">
+                    <td colspan="5">รายวิชาพื้นฐานประจำชั้น ม.5 ปีการศึกษา 2569</td>
+                </tr>
+                <tr class="semester-header">
+                    <td colspan="2">ภาคเรียนที่ 1</td>
+                    <td colspan="2">ภาคเรียนที่ 2</td>
+                    <td>หน่วยกิต</td>
+                </tr>
+                <tr class="group-header">
+                    <td colspan="5">รายวิชาพื้นฐาน</td>
+                </tr>
+                <tr class="semester-1">
+                    <td class="subject-code">ท32101</td>
+                    <td class="subject-name">ภาษาไทย 3</td>
+                    <td class="subject-code">ท32102</td>
+                    <td class="subject-name">ภาษาไทย 4</td>
+                    <td class="hours">2.0</td>
+                </tr>
+                <tr class="semester-1">
+                    <td class="subject-code">ค32103</td>
+                    <td class="subject-name">คณิตศาสตร์ 3 (วิทย์)</td>
+                    <td class="subject-code">ค32104</td>
+                    <td class="subject-name">คณิตศาสตร์ 4 (วิทย์)</td>
+                    <td class="hours">2.0</td>
+                </tr>
+                <tr class="semester-1">
+                    <td class="subject-code">ว32121</td>
+                    <td class="subject-name">วิทยาศาสตร์กายภาพ 1 (เคมี)</td>
+                    <td class="subject-code">ว32163</td>
+                    <td class="subject-name">วิทยาศาสตร์โลกและอวกาศ</td>
+                    <td class="hours">2.5</td>
+                </tr>
+                <tr class="semester-1">
+                    <td class="subject-code">ส32101</td>
+                    <td class="subject-name">สังคมศึกษา 3</td>
+                    <td class="subject-code">ส32102</td>
+                    <td class="subject-name">สังคมศึกษา 4</td>
+                    <td class="hours">2.0</td>
+                </tr>
+                <tr class="semester-1">
+                    <td class="subject-code"></td>
+                    <td class="subject-name"></td>
+                    <td class="subject-code">ส32105</td>
+                    <td class="subject-name">ประวัติศาสตร์สากล 1</td>
+                    <td class="hours">0.5</td>
+                </tr>
+                <tr class="semester-1">
+                    <td class="subject-code">พ32101</td>
+                    <td class="subject-name">สุขศึกษาและพลศึกษา 3</td>
+                    <td class="subject-code">พ32102</td>
+                    <td class="subject-name">สุขศึกษาและพลศึกษา 4</td>
+                    <td class="hours">1.0</td>
+                </tr>
+                <tr class="semester-1">
+                    <td class="subject-code">ศ32101</td>
+                    <td class="subject-name">ดนตรี-นาฏศิลป์ 2</td>
+                    <td class="subject-code">ศ32102</td>
+                    <td class="subject-name">ทัศนศิลป์ 2</td>
+                    <td class="hours">1.0</td>
+                </tr>
+                <tr class="semester-1">
+                    <td class="subject-code">ง32101</td>
+                    <td class="subject-name">การงานอาชีพ 2</td>
+                    <td class="subject-code">ง32102</td>
+                    <td class="subject-name">การงานอาชีพ 3</td>
+                    <td class="hours">1.0</td>
+                </tr>
+                <tr class="semester-1">
+                    <td class="subject-code">อ32101</td>
+                    <td class="subject-name">ภาษาอังกฤษ 3</td>
+                    <td class="subject-code">อ32102</td>
+                    <td class="subject-name">ภาษาอังกฤษ 4</td>
+                    <td class="hours">2.0</td>
+                </tr>
+                <tr class="total-row">
+                    <td colspan="4">รวมพื้นฐาน</td>
+                    <td>14.0</td>
+                </tr>
+                <tr class="group-header">
+                    <td colspan="5">รายวิชาเพิ่มเติม</td>
+                </tr>
+                <tr class="semester-2">
+                    <td class="subject-code">อ32201</td>
+                    <td class="subject-name">ภาษาอังกฤษฟัง-พูดเพื่องานบริการ 1</td>
+                    <td class="subject-code">อ32202</td>
+                    <td class="subject-name">ภาษาอังกฤษฟัง-พูดเพื่องานบริการ 2</td>
+                    <td class="hours">2.0</td>
+                </tr>
+                <tr class="semester-2">
+                    <td class="subject-code">ว32271</td>
+                    <td class="subject-name">วิทยาการคำนวณ เพิ่มเติม 1</td>
+                    <td class="subject-code">ว32273</td>
+                    <td class="subject-name">การเขียนโปรแกรมภาษา C</td>
+                    <td class="hours">2.0</td>
+                </tr>
+                <tr class="semester-2">
+                    <td class="subject-code">I31201</td>
+                    <td class="subject-name">การศึกษาค้นคว้าและสร้างองค์ความรู้ (IS1)</td>
+                    <td class="subject-code">I31202</td>
+                    <td class="subject-name">การสื่อสารและการนำเสนอ (IS2)</td>
+                    <td class="hours">2.0</td>
+                </tr>
+                <tr class="semester-2">
+                    <td class="subject-code">อ32203</td>
+                    <td class="subject-name">ภาษาอังกฤษอ่าน-เขียนเพื่อชีวิตและสังคม 1</td>
+                    <td class="subject-code">อ32204</td>
+                    <td class="subject-name">ภาษาอังกฤษอ่าน-เขียนเพื่อชีวิตและสังคม 2</td>
+                    <td class="hours">2.0</td>
+                </tr>
+                <tr class="semester-2">
+                    <td class="subject-code">ท32201</td>
+                    <td class="subject-name">ภาษาไทยเชิงสร้างสรรค์เพื่ออนาคต</td>
+                    <td class="subject-code">ท32202</td>
+                    <td class="subject-name">ภาษาไทยเชิงวิเคราะห์</td>
+                    <td class="hours">2.0</td>
+                </tr>
+                <tr class="semester-2">
+                    <td class="subject-code">ศ30203</td>
+                    <td class="subject-name">ศิลปะและการออกแบบเบื้องต้น 3</td>
+                    <td class="subject-code">ศ30204</td>
+                    <td class="subject-name">ศิลปะและการออกแบบเบื้องต้น 4</td>
+                    <td class="hours">3.0</td>
+                </tr>
+                <tr class="semester-2">
+                    <td class="subject-code">ศ30209</td>
+                    <td class="subject-name">ดนตรีและการแสดงเบื้องต้น 1</td>
+                    <td class="subject-code">ศ30210</td>
+                    <td class="subject-name">ดนตรีและการแสดงเบื้องต้น 2</td>
+                    <td class="hours">2.0</td>
+                </tr>
+                <tr class="total-row">
+                    <td colspan="4">รวมเพิ่มเติม</td>
+                    <td>15.0</td>
+                </tr>
+                <tr class="group-header">
+                    <td colspan="5">กิจกรรมพัฒนาผู้เรียน</td>
+                </tr>
+                <tr class="semester-1">
+                    <td class="subject-code">ก32991</td>
+                    <td class="subject-name">ชุมนุมตามความสนใจ 3/กิจกรรมนักศึกษาวิชาทหาร ชั้นปีที่ 2</td>
+                    <td class="subject-code">ก32992</td>
+                    <td class="subject-name">ชุมนุมตามความสนใจ 4/กิจกรรมนักศึกษาวิชาทหาร ชั้นปีที่ 2</td>
+                    <td class="hours">-</td>
+                </tr>
+                <tr class="semester-1">
+                    <td class="subject-code">ก32903</td>
+                    <td class="subject-name">แนะแนว 3</td>
+                    <td class="subject-code">ก32904</td>
+                    <td class="subject-name">แนะแนว 4</td>
+                    <td class="hours">-</td>
+                </tr>
+                <tr class="semester-1">
+                    <td class="subject-code">ก32903</td>
+                    <td class="subject-name">กิจกรรมเพื่อสังคมฯ 0</td>
+                    <td class="subject-code">I32203</td>
+                    <td class="subject-name">การนำองค์ความรู้ไปใช้บริการสังคม (IS3)</td>
+                    <td class="hours">-</td>
+                </tr>
+                <tr class="semester-1">
+                    <td class="subject-code"></td>
+                    <td class="subject-name">ค้นคว้า</td>
+                    <td class="subject-code"></td>
+                    <td class="subject-name">ค้นคว้า</td>
+                    <td class="hours">-</td>
+                </tr>
+                <tr class="total-row">
+                    <td colspan="4">รวมทั้งหมด</td>
+                    <td>29.0</td>
+                </tr>
+            </table>
+        </div>
+    `,
+    m6: `
+        <div class="curriculum-table">
+            <table>
+                <tr class="table-header">
+                    <td colspan="5">รายวิชาพื้นฐานประจำชั้น ม.6 ปีการศึกษา 2569</td>
+                </tr>
+                <tr class="semester-header">
+                    <td colspan="2">ภาคเรียนที่ 1</td>
+                    <td colspan="2">ภาคเรียนที่ 2</td>
+                    <td>หน่วยกิต</td>
+                </tr>
+                <tr class="group-header">
+                    <td colspan="5">รายวิชาพื้นฐาน</td>
+                </tr>
+                <tr class="semester-1">
+                    <td class="subject-code">ท33101</td>
+                    <td class="subject-name">ภาษาไทย 5</td>
+                    <td class="subject-code">ท33102</td>
+                    <td class="subject-name">ภาษาไทย 6</td>
+                    <td class="hours">2.0</td>
+                </tr>
+                <tr class="semester-1">
+                    <td class="subject-code">ค33103</td>
+                    <td class="subject-name">คณิตศาสตร์ 5 (วิทย์)</td>
+                    <td class="subject-code">ค33104</td>
+                    <td class="subject-name">คณิตศาสตร์ 6 (วิทย์)</td>
+                    <td class="hours">2.0</td>
+                </tr>
+                <tr class="semester-1">
+                    <td class="subject-code">ว33101</td>
+                    <td class="subject-name">วิทยาศาสตร์กายภาพ 2 (ฟิสิกส์)</td>
+                    <td class="subject-code"></td>
+                    <td class="subject-name"></td>
+                    <td class="hours">1.5</td>
+                </tr>
+                <tr class="semester-1">
+                    <td class="subject-code">ส33101</td>
+                    <td class="subject-name">สังคมศึกษา 5</td>
+                    <td class="subject-code">ส33102</td>
+                    <td class="subject-name">สังคมศึกษา 6</td>
+                    <td class="hours">2.0</td>
+                </tr>
+                <tr class="semester-1">
+                    <td class="subject-code"></td>
+                    <td class="subject-name"></td>
+                    <td class="subject-code">ส32106</td>
+                    <td class="subject-name">ประวัติศาสตร์สากล 2</td>
+                    <td class="hours">0.5</td>
+                </tr>
+                <tr class="semester-1">
+                    <td class="subject-code">พ33101</td>
+                    <td class="subject-name">สุขศึกษาและพลศึกษา 5</td>
+                    <td class="subject-code">พ33102</td>
+                    <td class="subject-name">สุขศึกษาและพลศึกษา 6</td>
+                    <td class="hours">1.0</td>
+                </tr>
+                <tr class="semester-1">
+                    <td class="subject-code">ศ33101</td>
+                    <td class="subject-name">ทัศนศิลป์ 3</td>
+                    <td class="subject-code">ศ33102</td>
+                    <td class="subject-name">ดนตรี-นาฏศิลป์ 3</td>
+                    <td class="hours">1.0</td>
+                </tr>
+                <tr class="semester-1">
+                    <td class="subject-code">ง33101</td>
+                    <td class="subject-name">การงานอาชีพ 4</td>
+                    <td class="subject-code"></td>
+                    <td class="subject-name"></td>
+                    <td class="hours">0.5</td>
+                </tr>
+                <tr class="semester-1">
+                    <td class="subject-code">อ33101</td>
+                    <td class="subject-name">ภาษาอังกฤษ 5</td>
+                    <td class="subject-code">อ33102</td>
+                    <td class="subject-name">ภาษาอังกฤษ 6</td>
+                    <td class="hours">2.0</td>
+                </tr>
+                <tr class="total-row">
+                    <td colspan="4">รวมพื้นฐาน</td>
+                    <td>12.5</td>
+                </tr>
+                <tr class="group-header">
+                    <td colspan="5">รายวิชาเพิ่มเติม</td>
+                </tr>
+                <tr class="semester-2">
+                    <td class="subject-code">อ33201</td>
+                    <td class="subject-name">ภาษาอังกฤษฟัง-พูดเพื่อธุรกิจอาชีพ 1</td>
+                    <td class="subject-code">อ33202</td>
+                    <td class="subject-name">ภาษาอังกฤษฟัง-พูดเพื่อธุรกิจอาชีพ 2</td>
+                    <td class="hours">2.0</td>
+                </tr>
+                <tr class="semester-2">
+                    <td class="subject-code">ว33271</td>
+                    <td class="subject-name">วิทยาการคำนวณ เพิ่มเติม 2</td>
+                    <td class="subject-code">ว33273</td>
+                    <td class="subject-name">การสร้างเว็บไซต์</td>
+                    <td class="hours">2.0</td>
+                </tr>
+                <tr class="semester-2">
+                    <td class="subject-code">อ33203</td>
+                    <td class="subject-name">ภาษาอังกฤษอ่าน-เขียนเพื่อการศึกษาต่อ 1</td>
+                    <td class="subject-code">อ33204</td>
+                    <td class="subject-name">ภาษาอังกฤษอ่าน-เขียนเพื่อการศึกษาต่อ 2</td>
+                    <td class="hours">2.0</td>
+                </tr>
+                <tr class="semester-2">
+                    <td class="subject-code">ท33201</td>
+                    <td class="subject-name">ภาษาไทยเพื่อพัฒนาอาชีพ</td>
+                    <td class="subject-code">ท32202</td>
+                    <td class="subject-name">ภาษาไทยเพื่อกิจกรรมการแสดง</td>
+                    <td class="hours">2.0</td>
+                </tr>
+                <tr class="semester-2">
+                    <td class="subject-code">ศ30205</td>
+                    <td class="subject-name">ศิลปะและการออกแบบเบื้องต้น 5</td>
+                    <td class="subject-code">ศ30206</td>
+                    <td class="subject-name">ศิลปะและการออกแบบเบื้องต้น 6</td>
+                    <td class="hours">3.0</td>
+                </tr>
+                <tr class="semester-2">
+                    <td class="subject-code">ศ30211</td>
+                    <td class="subject-name">ดนตรีและการแสดงเชิงสร้างสรรค์ 1</td>
+                    <td class="subject-code">ศ30212</td>
+                    <td class="subject-name">ดนตรีและการแสดงเชิงสร้างสรรค์ 2</td>
+                    <td class="hours">2.0</td>
+                </tr>
+                <tr class="total-row">
+                    <td colspan="4">รวมเพิ่มเติม</td>
+                    <td>13.0</td>
+                </tr>
+                <tr class="group-header">
+                    <td colspan="5">กิจกรรมพัฒนาผู้เรียน</td>
+                </tr>
+                <tr class="semester-1">
+                    <td class="subject-code">ก33991</td>
+                    <td class="subject-name">ชุมนุมตามความสนใจ 5/กิจกรรมนักศึกษาวิชาทหาร ชั้นปีที่ 3</td>
+                    <td class="subject-code">ก33992</td>
+                    <td class="subject-name">ชุมนุมตามความสนใจ 6/กิจกรรมนักศึกษาวิชาทหาร ชั้นปีที่ 3</td>
+                    <td class="hours">-</td>
+                </tr>
+                <tr class="semester-1">
+                    <td class="subject-code">ก33903</td>
+                    <td class="subject-name">แนะแนว 5</td>
+                    <td class="subject-code">ก33904</td>
+                    <td class="subject-name">แนะแนว 6</td>
+                    <td class="hours">-</td>
+                </tr>
+                <tr class="semester-1">
+                    <td class="subject-code">ก33903</td>
+                    <td class="subject-name">กิจกรรมเพื่อสังคมฯ 1</td>
+                    <td class="subject-code">ก33904</td>
+                    <td class="subject-name">กิจกรรมเพื่อสังคมฯ 1</td>
+                    <td class="hours">-</td>
+                </tr>
+                <tr class="semester-1">
+                    <td class="subject-code"></td>
+                    <td class="subject-name">ค้นคว้า</td>
+                    <td class="subject-code"></td>
+                    <td class="subject-name">ค้นคว้า</td>
+                    <td class="hours">-</td>
+                </tr>
+                <tr class="total-row">
+                    <td colspan="4">รวมทั้งหมด</td>
+                    <td>25.5</td>
+                </tr>
+            </table>
+        </div>
+    `
+};
+
+function showGrade(grade) {
+    document.getElementById("subjects-container").innerHTML = curriculumData[grade];
+    
+    document.querySelectorAll(".grade-btn").forEach(btn =>
+        btn.classList.remove("active")
+    );
+    event.target.classList.add("active");
+}
+
+// โหลด ม.4 ตอนเปิดหน้า
+showGrade("m4");
+    </script>
+</body>
+</html>

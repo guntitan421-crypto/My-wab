@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>แบบทดสอบหาสายการเรียน</title>
+    <link rel="stylesheet" href="space.css">
+</head>
+<body>
+    <!-- พื้นหลังอวกาศ -->
+    <div class="stars" id="starsContainer"></div>
+    <div class="glow-spot" style="top: 10%; left: 15%;"></div>
+    <div class="glow-spot" style="bottom: 20%; right: 10%;"></div>
+
+    <!-- ส่วนหมู่ดาว -->
+    <div class="left-section">
+        <div class="constellation-container" id="constellationContainer"></div>
+    </div>
+
+    <!-- ส่วนคำถาม -->
+    <div class="right-section" id="quizContainer">
+    <!-- คำถามจะถูกสร้างที่นี่ -->
+    </div>
+
+    <!-- Intro overlay (SVG-drawn animation) -->
+    <div id="introOverlay" class="intro-overlay">
+        <div class="intro-card">
+            <div class="intro-title">&nbsp;</div>
+            <div class="intro-sub">ค้นหาสายการเรียนที่ใช่สำหรับคุณอย่างสนุกและรวดเร็ว</div>
+            <div class="intro-rocket"></div>
+            <button id="startBtn" class="btn start-btn hidden">เริ่มเลย</button>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="space.js"></script>
+    <script type="module" src="intro.js"></script>
+</body>
+</html>"},{ 
